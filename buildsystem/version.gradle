@@ -1,0 +1,33 @@
+ext {
+    config = [
+            compileSdkVersion: 25,
+            buildToolsVersion: "25.0.2",
+            applicationId    : "com.shivamdev.transactionviewer",
+            minSdkVersion    : 15,
+            targetSdkVersion : 25,
+            versionCode      : 1,
+            versionName      : "1.0"
+    ]
+
+    libs = [
+            support         : "25.1.0",
+            playServices    : "9.8.0",
+            gson            : "2.6.2",
+            rxJava          : "1.2.1",
+            rxAndroid       : "1.2.1",
+            butterknife     : "8.3.0",
+            dagger          : "2.7",
+            javax_annotation: "1.0",
+            parceler        : "1.1.6",
+            timber          : "4.5.1",
+    ]
+
+    testing = [
+            junit         : "4.12",
+            espresso      : "2.2.2",
+            mockito       : "2.2.29",
+            powermockito  : "1.6.2",
+            powermockjunit: "1.6.2",
+            hamrest       : "1.3",
+    ]
+}

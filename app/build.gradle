@@ -1,0 +1,80 @@
+apply plugin: 'com.android.application'
+apply plugin: 'me.tatarka.retrolambda'
+apply plugin: 'com.neenbedankt.android-apt'
+
+android {
+    compileSdkVersion config.compileSdkVersion
+    buildToolsVersion config.buildToolsVersion
+    defaultConfig {
+        applicationId config.applicationId
+        minSdkVersion config.minSdkVersion
+        targetSdkVersion config.targetSdkVersion
+        versionCode config.versionCode
+        versionName config.versionName
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    productFlavors {
+        dev {
+            minSdkVersion 21
+        }
+
+        prod {
+            minSdkVersion config.minSdkVersion
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            debuggable false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
+        debug {
+            minifyEnabled false
+            debuggable true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+
+    // Google Support stuff
+    compile "com.android.support:appcompat-v7:${libs.support}"
+    compile "com.android.support:design:${libs.support}"
+
+    // Rx
+    compile "io.reactivex:rxjava:${libs.rxJava}"
+    compile "io.reactivex:rxandroid:${libs.rxAndroid}"
+
+    // Butterknife
+    compile "com.jakewharton:butterknife:${libs.butterknife}"
+    apt "com.jakewharton:butterknife-compiler:${libs.butterknife}"
+
+    // DI
+    apt "com.google.dagger:dagger-compiler:${libs.dagger}"
+    compile "com.google.dagger:dagger:${libs.dagger}"
+    provided "javax.annotation:jsr250-api:${libs.javax_annotation}"
+    compile "com.jakewharton.timber:timber:${libs.timber}"
+
+    // Networking libs
+    compile "com.google.code.gson:gson:${libs.gson}"
+
+    // Testing
+    androidTestCompile 'com.android.support:support-annotations:25.1.0'
+    androidTestCompile "com.android.support.test.espresso:espresso-core:${testing.espresso}"
+    testCompile "junit:junit:${testing.junit}"
+    testCompile "org.mockito:mockito-core:${testing.mockito}"
+
+    // Misc
+    compile "org.parceler:parceler-api:${libs.parceler}"
+    apt "org.parceler:parceler:${libs.parceler}"
+}

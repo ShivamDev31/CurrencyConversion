@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">CurrencyConversion</string>
+    <string name="error_no_products">No products found</string>
+    <string name="no_of_transactions">%d transactions</string>
+    <string name="error_product_click">Error while fetching product details, please try again.</string>
+    <string name="loading">Loading…</string>
+    <string name="total_gbp">Total : GBP %s</string>
+</resources>
